@@ -1,0 +1,9 @@
+{% extends 'cancionero/base.html' %}
+
+{% block content %}
+    {% for cancion in canciones %}
+    <div>
+        <h2><a href="">{{ cancion.titulo }}</a></h2>
+    </div>
+    {% endfor %}
+{% endblock %}
