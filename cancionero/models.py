@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Cancion(models.Model):
@@ -25,7 +24,8 @@ class Cancion(models.Model):
         choices = TONOS,
         default = "C" 
         )
-    letra = RichTextField()
+    letra = models.TextField()
+    nro_sp = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.titulo

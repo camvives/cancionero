@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cancionero.apps.CancioneroConfig', 
-    'ckeditor',
 ]
 
 MIDDLEWARE = [

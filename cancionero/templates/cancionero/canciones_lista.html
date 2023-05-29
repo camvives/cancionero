@@ -1,9 +1,31 @@
 {% extends 'cancionero/base.html' %}
 
 {% block content %}
-    {% for cancion in canciones %}
-    <div>
-        <h2><a href="">{{ cancion.titulo }}</a></h2>
-    </div>
-    {% endfor %}
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th># (SP)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cancion in canciones %}
+            <tr>
+                <td><a href="">{{ cancion.titulo }}</a> </td>
+                <td>{{ cancion.nro_sp }}</td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
+
 {% endblock %}
