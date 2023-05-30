@@ -12,7 +12,7 @@
         <tbody>
             {% for cancion in canciones %}
             <tr>
-                <td><a href="">{{ cancion.titulo }}</a> </td>
+                <td><a href="{% url 'cancion_detalle' pk=cancion.pk %}">{{ cancion.titulo }}</a></td>
                 <td>{{ cancion.nro_sp }}</td>
             </tr>
             

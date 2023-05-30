@@ -1,0 +1,37 @@
+{% extends 'cancionero/base.html' %}
+
+{% block content %}
+<style>
+    .letra {
+        font-family: piepie, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        @media (max-width: 1200px) {
+        .letra {
+            font-size: 3vw; /* Set the desired maximum font size */
+        }
+        }
+
+        @media (max-width: 768px) {
+            .letra {
+                font-size: 2.5vw; /* Decrease the font size for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letra {
+                font-size: 4vw; /* Further decrease the font size for even smaller screens */
+            }
+        }
+</style>
+<div class="row text-center mb-5 ml-3">
+    <h1>{{ cancion.titulo }}</h1>
+</div>
+
+<div class="row ml-3">
+    <pre class="letra">{{ cancion.letra }}</pre>
+</div>
+
+{% endblock %}
