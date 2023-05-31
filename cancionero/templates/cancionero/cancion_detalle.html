@@ -25,13 +25,27 @@
                 font-size: 4vw; /* Further decrease the font size for even smaller screens */
             }
         }
+
+        em {
+            line-height:3em;
+            position: relative;
+            color:blue;
+            top: -1em;
+            display:inline-block;
+            width: 0;
+            }
 </style>
 <div class="row text-center mb-5 ml-3">
     <h1>{{ cancion.titulo }}</h1>
 </div>
 
-<div class="row ml-3">
+<div class="row ml-1" id="chords">
     <pre class="letra">{{ cancion.letra }}</pre>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $('#chords').html(function(i, html) {
+    return html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    }); 
+</script>
 {% endblock %}
