@@ -11,17 +11,35 @@
             #example td:first-child {
                 width: 90%; /* Adjust the width as needed */
             }
+            body {
+            background-color: #f0ede6fe;
+            }
+            .navbar {
+            background-color: transparent;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow properties here */
+            }
+/* 
+            .navbar .navbar-brand {
+                color: #00000000;
+                font-family: Lobster;
+                font-size: xx-large;
+            } */
+
+
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-light">
             <a class="navbar-brand" style="font-family:Lobster;font-size: xx-large;" href="#">Cancionero Digital</a>
+            <h6 class="text-muted">Parroquia San Pedro Apóstol (Casilda) - Iglesia Buen Pastor (Rosario)</h6>
             <!-- <button class="btn btn-dark my-2 my-sm-0" type="submit">Ingresar</button> -->
         </nav>
 
         <div class="content container mt-5">
+
                 {% block content %}
                 {% endblock %}
+            </div>
         </div>         
 
     </body>

@@ -35,7 +35,9 @@
             width: 0;
             }
     </style>
+<div class="card rounded-lg border-0 shadow-lg position-relative" style="border-radius: 1rem;">
 
+    <div class="card-body" style="padding: 0.25rem;">
         <a href="{% url 'lista_canciones' %}">
             <button type="button" class="btn btn-secondary btn-block">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
@@ -70,10 +72,14 @@
               </form>
             </div>
           </div>
+
   
 <div class="row ml-1 mt-3" id="chords">
     <pre class="letra">{{ cancion.letra }}</pre>
 </div>
+    </div>
+    </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
