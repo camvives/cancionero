@@ -47,25 +47,22 @@
 {% for cancion in canciones %}
 <div class="card rounded-lg border-0 shadow-lg position-relative mt-3" style="border-radius: 1rem;">
     <div class="card-body" style="padding: 0.25rem;">
-
         <div class="row text-center mb-1 ml-1 mt-4">
             <h1>{{ cancion.titulo }}</h1>
         </div>
-        <div class="row ml-1 mt-3" id="chords">
+        <div class="row ml-1 mt-3" id="chords_{{ cancion.id }}">
             <pre class="letra">{{ cancion.letra }}</pre>
         </div>
-</div>
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#change').hide(); 
-        $('#chords').html(function(i, html) {
-        return html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        $('#chords_{{ cancion.id }}').html(function(i, html) {
+            return html.replace(/\*(.*?)\*/g, '<em>$1</em>');
         }); 
     });
 </script>
-
 {% endfor %}
 {% endblock %}
