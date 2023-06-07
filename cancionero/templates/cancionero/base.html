@@ -18,29 +18,38 @@
             background-color: transparent;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow properties here */
             }
-/* 
-            .navbar .navbar-brand {
-                color: #00000000;
-                font-family: Lobster;
-                font-size: xx-large;
-            } */
-
 
         </style>
     </head>
     <body>
         <nav class="navbar navbar-light">
-            <a class="navbar-brand" style="font-family:Lobster;font-size: xx-large;" href="#">Cancionero Digital</a>
-            <h6 class="text-muted">Parroquia San Pedro Apóstol (Casilda) - Iglesia Buen Pastor (Rosario)</h6>
-            <!-- <button class="btn btn-dark my-2 my-sm-0" type="submit">Ingresar</button> -->
+            <a class="navbar-brand" style="font-family:Lobster;font-size: xx-large;" href="{% url 'lista_canciones' %}">Cancionero Digital</a>
+        
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'lista_canciones' %}">Lista de canciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'setlists' %}">SetLists</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Ingresar</a>
+                    </li> -->
+                </ul>
+            </div>
         </nav>
 
         <div class="content container mt-5">
-
                 {% block content %}
                 {% endblock %}
             </div>
         </div>         
 
     </body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </html>

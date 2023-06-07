@@ -1,0 +1,71 @@
+{% extends 'cancionero/base.html' %}
+
+{% block content %}
+<style>
+    .letra {
+        font-family: piepie, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        @media (max-width: 1200px) {
+        .letra {
+            font-size: 3vw; /* Set the desired maximum font size */
+        }
+        }
+
+        @media (max-width: 768px) {
+            .letra {
+                font-size: 2.5vw; /* Decrease the font size for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letra {
+                font-size: 4vw; /* Further decrease the font size for even smaller screens */
+            }
+        }
+
+        em {
+            line-height:3em;
+            position: relative;
+            color:blue;
+            top: -1em;
+            display:inline-block;
+            width: 0;
+            }
+    </style>
+
+<a href="{% url 'setlists' %}">
+    <button type="button" class="btn btn-secondary btn-block">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+        </svg>
+    </button>
+</a>
+
+{% for cancion in canciones %}
+<div class="card rounded-lg border-0 shadow-lg position-relative mt-3" style="border-radius: 1rem;">
+    <div class="card-body" style="padding: 0.25rem;">
+
+        <div class="row text-center mb-1 ml-1 mt-4">
+            <h1>{{ cancion.titulo }}</h1>
+        </div>
+        <div class="row ml-1 mt-3" id="chords">
+            <pre class="letra">{{ cancion.letra }}</pre>
+        </div>
+</div>
+</div>
+
+{% endfor %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#change').hide(); 
+        $('#chords').html(function(i, html) {
+        return html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        }); 
+    });
+    
+</script>
+{% endblock %}

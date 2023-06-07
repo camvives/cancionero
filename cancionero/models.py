@@ -4,27 +4,7 @@ import re
 
 # Create your models here.
 class Cancion(models.Model):
-    TONOS = (
-        ("C", "C"),
-        ("C#", "C#"),
-        ("D", "D"),
-        ("D#", "D#"),
-        ("E", "E"),
-        ("F", "F"),
-        ("F#", "F#"),
-        ("G", "G"),
-        ("G#", "G#"),
-        ("A", "A"),
-        ("A#", "A#"),
-        ("B", "B")
-    )
-
     titulo = models.CharField(max_length=200)
-    tono = models.CharField(
-        max_length = 2,
-        choices = TONOS,
-        default = "C" 
-        )
     letra = models.TextField()
     nro_sp = models.IntegerField(blank=True, null=True)
 
@@ -81,3 +61,9 @@ class Cancion(models.Model):
         result = pattern.sub(lambda x: '*' + replacements.get(x.group(1), x.group(1)) + '*', self.letra)
         self.letra = result
 
+class Setlist(models.Model):
+    titulo = models.CharField(max_length=200)
+    canciones = models.ManyToManyField(Cancion)
+
+    def __str__(self):
+        return self.titulo

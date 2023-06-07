@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Cancion
+from .models import Cancion, Setlist
 
 # Create your views here.
 def lista_canciones(request):
@@ -26,3 +26,12 @@ def bajar_medio_view(request, cancion_id):
     cancion.save()
 
     return render(request, 'cancionero/cancion_detalle.html', {'cancion': cancion})
+
+def setlists(request):
+    setlists = Setlist.objects.all()
+    return render(request, 'cancionero/setlists.html', {'setlists': setlists})
+
+def setlist_detalle(request, pk):
+    setlist = get_object_or_404(Setlist, pk=pk)
+    canciones = setlist.canciones.all()
+    return render(request, 'cancionero/setlist_detalle.html', {'canciones': canciones})

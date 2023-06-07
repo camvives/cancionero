@@ -4,19 +4,17 @@
 <div class="card rounded-lg border-0 shadow-lg position-relative" style="border-radius: 1rem;">
 
     <div class="card-body ">
-    <h4> Listado de canciones</h4>
+    <h4> Listado de setlists</h4>
     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Título</th>
-                <th># (SP)</th>
             </tr>
         </thead>
         <tbody>
-            {% for cancion in canciones %}
+            {% for setlist in setlists %}
             <tr>
-                <td><a href="{% url 'cancion_detalle' pk=cancion.pk %}">{{ cancion.titulo }}</a></td>
-                <td>{{ cancion.nro_sp }}</td>
+                <td><a href="{% url 'setlist_detalle' pk=setlist.pk %}">{{ setlist.titulo }}</a></td>
             </tr>          
             {% endfor %}
         </tbody>
@@ -31,5 +29,6 @@
             $('#example').DataTable();
         });
     </script>
+
 
 {% endblock %}
