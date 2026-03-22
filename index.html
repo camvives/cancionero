@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cancionero Pro</title>
+    <style>
+        :root { --bg: #000; --primary: #00ff88; --text: #eee; --chord: #44ccff; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: ui-monospace, 'Cascadia Code', monospace; background: var(--bg); color: var(--text); margin: 0; }
+
+        /* UI */
+        header { padding: 10px; background: #111; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 10; }
+        .tonos { display: flex; overflow-x: auto; gap: 8px; padding: 10px 0; scrollbar-width: none; }
+        .btn-t { flex: 0 0 auto; background: #222; border: 1px solid #333; color: #fff; padding: 8px 12px; border-radius: 6px; }
+        .btn-t.active { background: var(--primary); color: #000; }
+        
+        #sidebar { position: fixed; left: -280px; top: 0; width: 280px; height: 100%; background: #050505; z-index: 100; transition: 0.3s; padding: 20px; overflow-y: auto; border-right: 1px solid #222; }
+        #sidebar.open { left: 0; }
+        .item { padding: 15px 0; border-bottom: 1px solid #111; cursor: pointer; }
+        .content { padding: 15px; padding-bottom: 100px; white-space: pre-wrap; }
+        .c { color: var(--chord); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h2 onclick="toggleMenu()" style="color:var(--primary)">✕ Cerrar</h2>
+    <div id="lista"></div>
+</div>
+
+<header>
+    <div style="display:flex; align-items:center; gap:15px">
+        <button onclick="toggleMenu()" style="background:none; border:none; color:var(--primary); font-size:24px">☰</button>
+        <h1 id="title" style="font-size:1.1rem; margin:0">Mi Cancionero</h1>
+    </div>
+    <div class="tonos" id="btns"></div>
+</header>
+
+<div class="content" id="display"></div>
+
+<script>
+    const API = "http://127.0.0.1:8000";
+    const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    let currentId = "";
+
+    function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
+
+    async function init() {
+        const res = await fetch('http://127.0.0.1:8000/index.json');
+        const data = await res.json();
+        const list = document.getElementById('lista');
+        data.categorias.forEach(cat => {
+            cat.songs.forEach(s => {
+                list.innerHTML += `<div class="item" onclick="load('${s.id}')">${s.titulo}</div>`;
+            });
+        });
+        const btns = document.getElementById('btns');
+        NOTES.forEach(n => {
+            btns.innerHTML += `<button class="btn-t" data-tone="${n}" onclick="change('${n}')">${n}</button>`;
+        });
+    }
+
+    async function load(id, tone = null) {
+        currentId = id;
+        const url = tone ? `${API}/cancion/${id}?tono_elegido=${encodeURIComponent(tone)}` : `${API}/cancion/${id}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        document.getElementById('title').innerText = data.titulo;
+        document.querySelectorAll('.btn-t').forEach(b => b.classList.remove('active'));
+        
+        if(tone) {
+            const btn = document.querySelector(`[data-tone="${tone}"]`);
+            if(btn) btn.classList.add('active');
+        }
+
+        // Mostrar acordes en cyan (lo que está entre brackets)
+        const formatted = data.cuerpo.replace(/\[(.*?)\]/g, '<span class="c">[$1]</span>');
+        document.getElementById('display').innerHTML = formatted;
+        
+        if(document.getElementById('sidebar').classList.contains('open')) toggleMenu();
+    }
+
+    function change(n) { load(currentId, n); }
+    init();
+</script>
+</body>
+</html>
