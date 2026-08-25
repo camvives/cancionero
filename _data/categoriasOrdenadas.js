@@ -18,6 +18,7 @@ module.exports = () => {
     "Perdón",
     "Gloria",
     "Espíritu-Santo",
+    "Cuaresma",
     "Navidad",
   ];
 
