@@ -109,6 +109,22 @@ p {
   max-width: 100%;
 }
 
+#cancion-render .row {
+  margin-bottom: 0 !important;
+  line-height: 1.15 !important;
+}
+
+#cancion-render .chord,
+#cancion-render .lyrics {
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#cancion-render .paragraph {
+  margin-bottom: 1em !important;
+}
+
 /* Acordes */
 .chord {
   color: var(--rojo-cip);
@@ -120,6 +136,7 @@ p {
 #cancion-render {
   font-size: clamp(0.95rem, 4vw, 1.05rem);
 }
+
 
 /* Estribillo */
 .chorus {
