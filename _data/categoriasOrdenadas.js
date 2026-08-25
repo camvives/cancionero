@@ -5,13 +5,16 @@ module.exports = () => {
 
   const orden = [
     "Entrada",
+    "Perdón",
+    "Gloria",
     "Aleluya",
     "Post-homilia",
     "Ofrenda",
     "Santo",
     "Cordero",
     "Comunion",
-    "Post-Comunion",
+    "Meditación",
+    "Salida",
     "María"
   ];
 
