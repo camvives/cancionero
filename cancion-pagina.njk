@@ -10,7 +10,7 @@ permalink: "canciones/{{ cancion.slug }}/index.html"
 <head>
   <meta charset="UTF-8">
   <title>{{ cancion.title }}</title>
-  <link rel="stylesheet" href="/assets/estilos.css">
+  <link rel="stylesheet" href="{{ '/assets/estilos.css' | url }}">
 </head>
 <body>
   <h1>{{ cancion.title }}</h1>
@@ -26,7 +26,7 @@ permalink: "canciones/{{ cancion.slug }}/index.html"
 
   <script id="chordpro-fuente" type="text/plain">{{ cancion.chordpro }}</script>
 
-  <script src="/assets/chordsheetjs.js"></script>
-  <script src="/assets/transponer.js"></script>
+    <script src="{{ '/assets/chordsheetjs.js' | url }}"></script>
+    <script src="{{ '/assets/transponer.js' | url }}"></script>
 </body>
 </html>

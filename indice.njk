@@ -6,7 +6,7 @@ permalink: "index.html"
 <head>
   <meta charset="UTF-8">
   <title>Cancionero</title>
-  <link rel="stylesheet" href="/assets/estilos.css">
+  <link rel="stylesheet" href="{{ '/assets/estilos.css' | url }}">
 </head>
 <body>
   <h1>Cancionero</h1>
@@ -18,7 +18,7 @@ permalink: "index.html"
     <ul>
       {% for cancion in listaCanciones %}
         <li>
-          <a href="/canciones/{{ cancion.slug }}/">{{ cancion.title }}</a>
+          <a href="{{ ('/canciones/' + cancion.slug + '/') | url }}">{{ cancion.title }}</a>
           <span> — Tono original: {{ cancion.key }}</span>
         </li>
       {% endfor %}
