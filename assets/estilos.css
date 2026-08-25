@@ -1,69 +1,201 @@
-/* Reset básico y tipografía general */
+:root {
+  --fondo: #FFFDF9;
+  --tinta: #2B2B2B;
+  --azul: #4A90D9;
+  --verde: #52B788;
+  --rojo-cip: #A33D35;
+  --gris: #9A9A9A;
+  --linea: #EEEAE2;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  max-width: 700px;
+  font-family: 'Nunito', sans-serif;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #fafafa;
-  color: #1a1a1a;
-  line-height: 1.5;
+  padding: clamp(16px, 5vw, 28px);
+  background-color: var(--fondo);
+  color: var(--tinta);
+  line-height: 1.6;
+  font-size: clamp(15px, 4vw, 17px);
+  overflow-x: hidden;
 }
 
 h1 {
-  font-size: 1.8rem;
-  margin-bottom: 0.3em;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 9vw, 3rem);
+  margin: 0 0 0.15em 0;
+  line-height: 1.1;
+  color: var(--tinta);
 }
 
 h2 {
-  font-size: 1.3rem;
-  margin-top: 1.5em;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 0.2em;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+  color: var(--azul);
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
 }
 
-/* Info de categoría y tono */
 p {
-  margin: 0.3em 0;
-  color: #444;
+  margin: 0.2em 0;
+  color: var(--gris);
+  font-size: clamp(0.85rem, 3.5vw, 0.92rem);
+  font-weight: 600;
+}
+
+/* Etiqueta de tono */
+.tono-tag {
+  display: inline-block;
+  color: var(--gris);
 }
 
 #tono-actual {
-  font-weight: bold;
-  color: #1a1a1a;
+  font-weight: 800;
+  color: var(--verde);
 }
 
 /* Botones de transposición */
 .controles {
   display: flex;
   gap: 10px;
-  margin: 1em 0 1.5em 0;
+  margin: 1.4em 0 1.8em 0;
+  max-width: 320px;
+  width: 100%;
 }
 
 .controles button {
   flex: 1;
-  padding: 14px;
-  font-size: 1.1rem;
-  border: 2px solid #333;
-  border-radius: 8px;
-  background-color: #fff;
+  padding: 13px 12px;
+  min-height: 46px; /* tamaño mínimo recomendado para tocar con el dedo */
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(0.82rem, 3.5vw, 0.9rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--azul);
+  color: #fff;
   cursor: pointer;
-  touch-action: manipulation; /* mejor respuesta táctil en celular */
+  touch-action: manipulation;
+  transition: transform 0.1s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.controles button:last-child {
+  background-color: var(--verde);
 }
 
 .controles button:active {
-  background-color: #333;
-  color: #fff;
+  transform: scale(0.95);
 }
 
-/* Acordes: que se distingan claramente de la letra */
+/* Contenedor de la canción renderizada: scroll horizontal de respaldo
+   para líneas con muchos acordes que no entren en pantallas muy angostas */
+#cancion-render {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#cancion-render * {
+  max-width: 100%;
+}
+
+/* Acordes */
 .chord {
-  color: #b5322f;
-  font-weight: bold;
-  font-family: 'Courier New', monospace;
+  color: var(--rojo-cip);
+  font-weight: 800;
+  font-size: clamp(0.85em, 3.5vw, 1em);
+}
+
+/* Letra dentro del render: que ajuste bien el tamaño en pantallas chicas */
+#cancion-render {
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
+}
+
+/* Estribillo */
+.chorus {
+  font-weight: 700;
+  background-color: rgba(74,144,217,0.08);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 14px 0;
+  position: relative;
+}
+
+/* Ocultar el título que ChordSheetJS agrega automáticamente dentro del render */
+#cancion-render .title {
+  display: none;
+}
+
+/* Header */
+.header-principal {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1.2em;
+}
+
+.header-principal h1 {
+  margin-bottom: 0;
+}
+
+.header-cancion {
+  margin-bottom: 1.4em;
+}
+
+.link-inicio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--gris);
+  min-height: 44px; /* área táctil cómoda para volver al índice */
+}
+
+.link-inicio span {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1rem, 4vw, 1.1rem);
+  font-weight: 700;
+  color: var(--tinta);
+}
+
+.link-inicio:hover span {
+  color: var(--azul);
+}
+
+/* Buscador */
+.buscador {
+  width: 100%;
+  padding: 13px 16px;
+  min-height: 46px;
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(0.95rem, 4vw, 1rem);
+  font-weight: 600;
+  border: 2px solid var(--linea);
+  border-radius: 999px;
+  background-color: #fff;
+  color: var(--tinta);
+  margin-bottom: 1.4em;
+  outline: none;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+}
+
+.buscador:focus {
+  border-color: var(--azul);
+}
+
+.buscador::placeholder {
+  color: var(--gris);
 }
 
 /* Índice de canciones */
@@ -73,45 +205,64 @@ ul {
 }
 
 ul li {
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--linea);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 6px 10px;
+  min-height: 44px;
 }
 
 ul li a {
-  color: #1a1a1a;
+  color: var(--tinta);
   text-decoration: none;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
+  flex: 1 1 auto;
+  min-width: 60%;
 }
 
 ul li a:hover {
-  text-decoration: underline;
+  color: var(--azul);
 }
 
 ul li span {
-  color: #888;
-  font-size: 0.9rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--verde);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Responsive: ajustes para pantallas chicas */
-@media (max-width: 480px) {
-  body {
-    padding: 12px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .controles button {
-    font-size: 1rem;
-    padding: 12px;
-  }
+ul li:nth-child(even) span {
+  background-color: var(--azul);
 }
 
-/* Estribillo en negrita */
-.chorus {
-  font-weight: bold;
+/* Footer */
+.footer {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  border-top: 1px solid var(--linea);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gris);
+  font-weight: 600;
+}
+
+/* Pantallas muy angostas (celulares chicos) */
+@media (max-width: 360px) {
+  .controles {
+    max-width: 100%;
+  }
+
+  ul li span {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
 }

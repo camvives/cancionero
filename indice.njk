@@ -7,23 +7,36 @@ permalink: "index.html"
   <meta charset="UTF-8">
   <title>Cancionero</title>
   <link rel="stylesheet" href="{{ '/assets/estilos.css' | url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <h1>Cancionero</h1>
+<header class="header-principal">
+  <h1>Cancionero Católico ✝</h1>
+</header>
 
-  {% set categorias = canciones | groupby("category") %}
+<input type="text" id="buscador" class="buscador" placeholder="Buscar canción...">
 
-  {% for categoria, listaCanciones in categorias %}
-    <h2>{{ categoria }}</h2>
+{% for grupo in categoriasOrdenadas %}
+  <div class="categoria">
+    <h2>{{ grupo.categoria }}</h2>
     <ul>
-      {% for cancion in listaCanciones %}
+      {% for cancion in grupo.canciones %}
         <li>
           <a href="{{ ('/canciones/' + cancion.slug + '/') | url }}">{{ cancion.title }}</a>
           <span> — Tono original: {{ cancion.key }}</span>
         </li>
       {% endfor %}
     </ul>
-  {% endfor %}
-
+  </div>
+{% endfor %}
+<script src="{{ '/assets/buscador.js' | url }}"></script>
 </body>
+
 </html>
+<footer class="footer">
+  Hecho con ♥ por Cami
+</footer>
