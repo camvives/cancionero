@@ -1,0 +1,13 @@
+{title: Canción de Ejemplo}
+{key: G}
+{meta: category Alabanza}
+
+{start_of_verse}
+[G]Esta es la primera línea de la [C]canción
+[D]Acá sigue la segunda [G]línea
+{end_of_verse}
+
+{start_of_chorus}
+[Em]Este es el es[C]tribillo
+[G]Con su propio [D]acorde
+{end_of_chorus}

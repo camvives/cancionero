@@ -1,0 +1,117 @@
+/* Reset básico y tipografía general */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.3em;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-top: 1.5em;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.2em;
+}
+
+/* Info de categoría y tono */
+p {
+  margin: 0.3em 0;
+  color: #444;
+}
+
+#tono-actual {
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+/* Botones de transposición */
+.controles {
+  display: flex;
+  gap: 10px;
+  margin: 1em 0 1.5em 0;
+}
+
+.controles button {
+  flex: 1;
+  padding: 14px;
+  font-size: 1.1rem;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  touch-action: manipulation; /* mejor respuesta táctil en celular */
+}
+
+.controles button:active {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Acordes: que se distingan claramente de la letra */
+.chord {
+  color: #b5322f;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+/* Índice de canciones */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+ul li span {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Responsive: ajustes para pantallas chicas */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .controles button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Estribillo en negrita */
+.chorus {
+  font-weight: bold;
+}

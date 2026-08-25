@@ -1,0 +1,32 @@
+---
+pagination:
+  data: canciones
+  size: 1
+  alias: cancion
+permalink: "canciones/{{ cancion.slug }}/index.html"
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ cancion.title }}</title>
+  <link rel="stylesheet" href="/assets/estilos.css">
+</head>
+<body>
+  <h1>{{ cancion.title }}</h1>
+  <p>Categoría: {{ cancion.category }}</p>
+  <p>Tono actual: <span id="tono-actual">{{ cancion.key }}</span></p>
+
+  <div class="controles">
+    <button id="bajar">− Bajar tono</button>
+    <button id="subir">+ Subir tono</button>
+  </div>
+
+  <div id="cancion-render"></div>
+
+  <script id="chordpro-fuente" type="text/plain">{{ cancion.chordpro }}</script>
+
+  <script src="/assets/chordsheetjs.js"></script>
+  <script src="/assets/transponer.js"></script>
+</body>
+</html>

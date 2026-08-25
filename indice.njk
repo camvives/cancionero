@@ -1,0 +1,29 @@
+---
+permalink: "index.html"
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cancionero</title>
+  <link rel="stylesheet" href="/assets/estilos.css">
+</head>
+<body>
+  <h1>Cancionero</h1>
+
+  {% set categorias = canciones | groupby("category") %}
+
+  {% for categoria, listaCanciones in categorias %}
+    <h2>{{ categoria }}</h2>
+    <ul>
+      {% for cancion in listaCanciones %}
+        <li>
+          <a href="/canciones/{{ cancion.slug }}/">{{ cancion.title }}</a>
+          <span> — Tono original: {{ cancion.key }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+
+</body>
+</html>
