@@ -64,21 +64,21 @@ p {
   color: var(--verde);
 }
 
-/* Botones de transposición */
+/* Botones de transposición y copiar (fila unificada) */
 .controles {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin: 1.4em 0 1.8em 0;
-  max-width: 320px;
+  max-width: 420px;
   width: 100%;
 }
 
 .controles button {
   flex: 1;
-  padding: 13px 12px;
-  min-height: 46px; /* tamaño mínimo recomendado para tocar con el dedo */
+  padding: 13px 10px;
+  min-height: 46px;
   font-family: 'Nunito', sans-serif;
-  font-size: clamp(0.82rem, 3.5vw, 0.9rem);
+  font-size: clamp(0.78rem, 3.2vw, 0.9rem);
   font-weight: 700;
   border: none;
   border-radius: 999px;
@@ -90,12 +90,22 @@ p {
   white-space: nowrap;
 }
 
-.controles button:last-child {
+.controles button:active {
+  transform: scale(0.95);
+}
+
+#subir {
   background-color: var(--verde);
 }
 
-.controles button:active {
-  transform: scale(0.95);
+.boton-copiar {
+  background-color: var(--gris);
+}
+
+/* Foco accesible pero suave: color del acento en vez de un borde oscuro pesado */
+.controles button:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
 }
 
 /* Contenedor de la canción renderizada: scroll horizontal de respaldo
@@ -103,26 +113,11 @@ p {
 #cancion-render {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
 }
 
 #cancion-render * {
   max-width: 100%;
-}
-
-#cancion-render .row {
-  margin-bottom: 0 !important;
-  line-height: 1.15 !important;
-}
-
-#cancion-render .chord,
-#cancion-render .lyrics {
-  line-height: 1.15 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-#cancion-render .paragraph {
-  margin-bottom: 1em !important;
 }
 
 /* Acordes */
@@ -131,12 +126,6 @@ p {
   font-weight: 800;
   font-size: clamp(0.85em, 3.5vw, 1em);
 }
-
-/* Letra dentro del render: que ajuste bien el tamaño en pantallas chicas */
-#cancion-render {
-  font-size: clamp(0.95rem, 4vw, 1.05rem);
-}
-
 
 /* Estribillo */
 .chorus {
