@@ -20,6 +20,9 @@ module.exports = () => {
     "Espíritu-Santo",
     "Cuaresma",
     "Navidad",
+    "Pascua",
+    "Alabanza",
+    "Animación"
   ];
 
   return orden
