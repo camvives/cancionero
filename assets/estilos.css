@@ -120,6 +120,16 @@ p {
   max-width: 100%;
 }
 
+/* Interlineado entre la fila de acordes y la letra de cada verso */
+#cancion-render .row {
+  margin-bottom: 0.15em;
+}
+
+#cancion-render .chord,
+#cancion-render .lyrics {
+  line-height: 1.15;
+}
+
 /* Acordes */
 .chord {
   color: var(--rojo-cip);
