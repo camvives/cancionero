@@ -17,6 +17,8 @@ module.exports = () => {
       title: song.title || slug,
       key: song.key || "",
       category: song.metadata.get("category") || "Sin categoría",
+      sanpedro: song.metadata.get("sanpedro") || "",
+      buenpastor: song.metadata.get("buenpastor") || "",
       chordpro: contenido
     };
   });

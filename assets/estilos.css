@@ -244,19 +244,28 @@ ul li a:hover {
   color: var(--azul);
 }
 
-ul li span {
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  background-color: var(--verde);
-  padding: 4px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
+/* Números en los cancioneros impresos */
+.tags {
+  display: flex;
+  gap: 6px;
   flex-shrink: 0;
 }
 
-ul li:nth-child(even) span {
-  background-color: var(--azul);
+.tag {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.tag-sp {
+  background-color: var(--verde);
+}
+
+.tag-bp {
+  background-color: var(--rojo-cip);
 }
 
 /* Footer */
@@ -277,7 +286,7 @@ ul li:nth-child(even) span {
     max-width: 100%;
   }
 
-  ul li span {
+  .tag {
     font-size: 0.7rem;
     padding: 3px 8px;
   }

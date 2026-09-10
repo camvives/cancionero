@@ -18,16 +18,21 @@ permalink: "index.html"
   <h1>Cancionero Católico ✝</h1>
 </header>
 
-<input type="text" id="buscador" class="buscador" placeholder="Buscar canción...">
+<input type="text" id="buscador" class="buscador" placeholder="Buscar canción o número...">
 
 {% for grupo in categoriasOrdenadas %}
   <div class="categoria">
     <h2>{{ grupo.categoria }}</h2>
     <ul>
       {% for cancion in grupo.canciones %}
-        <li>
+        <li data-sp="{{ cancion.sanpedro }}" data-bp="{{ cancion.buenpastor }}">
           <a href="{{ ('/canciones/' + cancion.slug + '/') | url }}">{{ cancion.title }}</a>
-          <span> — Tono original: {{ cancion.key }}</span>
+          {% if cancion.sanpedro or cancion.buenpastor %}
+            <span class="tags">
+              {% if cancion.sanpedro %}<span class="tag tag-sp" title="Cancionero San Pedro">SP {{ cancion.sanpedro }}</span>{% endif %}
+              {% if cancion.buenpastor %}<span class="tag tag-bp" title="Cancionero Buen Pastor">BP {{ cancion.buenpastor }}</span>{% endif %}
+            </span>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
