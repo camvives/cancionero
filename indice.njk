@@ -27,8 +27,9 @@ permalink: "index.html"
       {% for cancion in grupo.canciones %}
         <li data-sp="{{ cancion.sanpedro }}" data-bp="{{ cancion.buenpastor }}">
           <a href="{{ ('/canciones/' + cancion.slug + '/') | url }}">{{ cancion.title }}</a>
-          {% if cancion.sanpedro or cancion.buenpastor %}
+          {% if cancion.sanpedro or cancion.buenpastor or not cancion.revisada %}
             <span class="tags">
+              {% if not cancion.revisada %}<span class="tag tag-borrador" title="Sin revisar: no se publica">borrador</span>{% endif %}
               {% if cancion.sanpedro %}<span class="tag tag-sp" title="Cancionero San Pedro">SP {{ cancion.sanpedro }}</span>{% endif %}
               {% if cancion.buenpastor %}<span class="tag tag-bp" title="Cancionero Buen Pastor">BP {{ cancion.buenpastor }}</span>{% endif %}
             </span>
