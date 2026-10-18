@@ -2,19 +2,20 @@
 {key: D}
 {meta: category Aleluya}
 {meta: sanpedro 391}
+{meta: estado revisada}
 
 {start_of_verse}
 [D]Hay gozo en el cielo
 Los ángeles [A]cantan
 Hay gozo en el [G]cielo
-[D]Los ángeles cantan
+Los ángeles ca[D]ntan
 Entregue mi [A]vida[G]
-[A]Aleluya, [D]aleluya.[A][D]
+Ale[A]luy[D]a, al[A]eluy[D]a
 {end_of_verse}
 
-{start_of_chorus}
-Aleluya, [A]aleluya
-[G]Aleluya, [D]aleluya
+{start_of_verse}
+Aleluya, alel[A]uya
+Alel[G]uya, alel[D]uya
 Entregue mi [A]vida[G]
-[A]Aleluya, [D]aleluya[A][D]
-{end_of_chorus}
+Ale[A]luy[D]a, al[A]eluy[D]a
+{end_of_verse}
