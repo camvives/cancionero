@@ -1,0 +1,27 @@
+---
+permalink: manifest.webmanifest
+---
+{
+  "id": "{{ '/' | url }}",
+  "name": "Cancionero Católico",
+  "short_name": "Cancionero",
+  "description": "Canciones católicas con acordes para acompañar la oración.",
+  "lang": "es",
+  "start_url": "{{ '/' | url }}",
+  "scope": "{{ '/' | url }}",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#a72c24",
+  "icons": [
+    {
+      "src": "{{ '/assets/icon-192.png' | url }}",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ '/assets/icon-512.png' | url }}",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

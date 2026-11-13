@@ -7,6 +7,9 @@ permalink: "index.html"
   <meta charset="UTF-8">
   <title>Cancionero</title>
   <link rel="stylesheet" href="{{ '/assets/estilos.css' | url }}">
+  <link rel="manifest" href="{{ '/manifest.webmanifest' | url }}">
+  <meta name="theme-color" content="#a72c24">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/icon-192.png' | url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +43,7 @@ permalink: "index.html"
   </div>
 {% endfor %}
 <script src="{{ '/assets/buscador.js' | url }}"></script>
+{% include "pwa-register.njk" %}
 </body>
 
 </html>
