@@ -2,8 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("buscador");
   if (!input) return;
 
+  const normalizar = (texto) =>
+    texto
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+
   input.addEventListener("input", () => {
-    const termino = input.value.toLowerCase().trim();
+    const termino = normalizar(input.value);
 
     // "13", "sp 13" o "bp 63": busca por número de cancionero.
     // Se compara como número para que "13" encuentre "013".
@@ -13,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let algunoVisible = false;
 
       bloque.querySelectorAll("li").forEach((li) => {
-        const titulo = li.querySelector("a").textContent.toLowerCase();
+        const titulo = normalizar(li.querySelector("a").textContent);
         let coincide = titulo.includes(termino);
 
         if (!coincide && busquedaNumero) {

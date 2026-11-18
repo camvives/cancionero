@@ -1,4 +1,4 @@
-const CACHE_NAME = "cancionero-v2";
+const CACHE_NAME = "cancionero-v3";
 const CORE_ASSETS = [
   "./",
   "./assets/estilos.css",
